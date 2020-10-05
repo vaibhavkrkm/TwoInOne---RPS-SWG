@@ -4,29 +4,13 @@ function backToMenu()
 }
 
 
-var gameArray = ["rock", "scissor", "paper"];
-
-var rockButton = document.getElementById("rock");
-var scissorButton = document.getElementById("scissor");
-var paperButton = document.getElementById("paper");
-var backButton = document.getElementById("goBack");
-var compMoveElement = document.getElementById("compMove");
-var playerMoveElement = document.getElementById("playerMove");
-var victorElement = document.getElementById("victorText");
-
-var turn = "player";
-var playerMove;
-var compMove;
-var victor;
-
-document.write("hello");
-
-rockButton.addEventListener("click", function(){                               // rock button
+function turnFunction(move)
+{
 	// player's turn
 	if(turn == "player")
 	{
 		turn = "comp";
-		playerMove = 0;
+		playerMove = gameArray.indexOf(move);
 		playerMoveElement.innerHTML = gameArray[playerMove].toUpperCase();
 	}
 	
@@ -77,14 +61,35 @@ rockButton.addEventListener("click", function(){                               /
 	}
 	else
 		victorElement.innerHTML = "Draw!";
+}
+
+
+var gameArray = ["rock", "scissor", "paper"];
+
+var rockButton = document.getElementById("rock");
+var scissorButton = document.getElementById("scissor");
+var paperButton = document.getElementById("paper");
+var backButton = document.getElementById("goBack");
+var compMoveElement = document.getElementById("compMove");
+var playerMoveElement = document.getElementById("playerMove");
+var victorElement = document.getElementById("victorText");
+
+var turn = "player";
+var playerMove;
+var compMove;
+var victor;
+
+
+rockButton.addEventListener("click", function(){                               // rock button
+	turnFunction("rock");
 });
 
 scissorButton.addEventListener("click", function(){                         // scissor button
-	
+	turnFunction("scissor");
 });
 
 paperButton.addEventListener("click", function(){                           // paper button
-	
+	turnFunction("paper");
 });
 
 backButton.addEventListener("click", function(){                              // back button for going back to main menu
